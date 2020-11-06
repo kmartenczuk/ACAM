@@ -33,3 +33,6 @@ C:\Users\CadCenter Polska\source\repos\cadcenterpl\ACAM\ACAM\obj\Release\ACAM.vb
 C:\Users\CadCenter Polska\source\repos\cadcenterpl\ACAM\ACAM\obj\Release\ACAM.dll
 C:\Users\CadCenter Polska\source\repos\cadcenterpl\ACAM\ACAM\obj\Release\ACAM.xml
 C:\Users\CadCenter Polska\source\repos\cadcenterpl\ACAM\ACAM\obj\Release\ACAM.pdb
+C:\Users\CadCenter Polska\source\repos\cadcenterpl\ACAM\ACAM\obj\Release\ACAM.vbproj.ResolveComReference.cache
+C:\Users\CadCenter Polska\source\repos\cadcenterpl\ACAM\ACAM\bin\Release\GemBox.Spreadsheet.dll
+C:\Users\CadCenter Polska\source\repos\cadcenterpl\ACAM\ACAM\bin\Release\GemBox.Spreadsheet.xml

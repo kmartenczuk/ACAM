@@ -10,12 +10,12 @@ Imports System.Runtime.InteropServices
 
 <Assembly: AssemblyTitle("ACAM")>
 <Assembly: AssemblyDescription("CAM plugin for AutroCAD")>
-<Assembly: AssemblyCompany("")>
+<Assembly: AssemblyCompany("Kamil Martenczuk")>
 <Assembly: AssemblyProduct("ACAM")>
 <Assembly: AssemblyCopyright("Copyright © Kamil Martenczuk  2020")>
 <Assembly: AssemblyTrademark("")>
 
-<Assembly: ComVisible(False)>
+<Assembly: ComVisible(True)>
 
 'Następujący identyfikator GUID jest identyfikatorem elementu typelib w przypadku udostępnienia tego projektu w modelu COM
 <Assembly: Guid("15093faa-87f0-41b1-90d9-114a5c8bc15b")>

@@ -11,13 +11,15 @@ Imports Autodesk.AutoCAD.ApplicationServices
 Imports Autodesk.AutoCAD.DatabaseServices
 
 
+
+
 Public Class Inizialisation
     <CommandMethod("ACAM")> Public Shared Sub Start()
         Dim ccpDoc As Document = Application.DocumentManager.MdiActiveDocument
         Dim ribbonControl As Autodesk.Windows.RibbonControl = Autodesk.Windows.ComponentManager.Ribbon
         Dim RibbonCHK As RibbonTab = ribbonControl.FindTab("CAM")
         If RibbonCHK Is Nothing Then
-            Call Menu.TabNotLoaded()
+            Call TabBuilder.CAM_Tab()
         Else
             If RibbonCHK.IsVisible = True Then Call Menu.TabLoaded() Else Call Menu.TabHidden()
         End If
@@ -27,23 +29,6 @@ Public Class Inizialisation
 End Class
 
 Public Class Menu
-    Public Shared Sub TabNotLoaded()
-        Dim ccpDoc As Document = Application.DocumentManager.MdiActiveDocument
-        Dim ccpDialog As PromptKeywordOptions = New PromptKeywordOptions("")
-        Dim ccpDialogRes As PromptResult
-        ccpDialog.Message = vbCrLf + "Is not loaded. Choose an Option: "
-        ccpDialog.Keywords.Add("Load")
-        ccpDialog.Keywords.Add("Help")
-        ccpDialog.Keywords.Add("Exit")
-        ccpDialog.Keywords.Default = "Load"
-        ccpDialog.AllowNone = False
-        ccpDialogRes = ccpDoc.Editor.GetKeywords(ccpDialog)
-        If ccpDialogRes.Status = PromptStatus.Cancel Then Exit Sub
-        If ccpDialogRes.StringResult = "Load" Then Call TabBuilder.CAM_Tab()
-        If ccpDialogRes.StringResult = "Help" Then Call TabBuilder.CAM_Tab()
-        If ccpDialogRes.StringResult = "Exit" Then Exit Sub
-    End Sub
-
     Public Shared Sub TabLoaded()
         Dim ccpDoc As Document = Application.DocumentManager.MdiActiveDocument
         Dim ccpDialog As PromptKeywordOptions = New PromptKeywordOptions("")
@@ -92,16 +77,17 @@ End Class
 Public Class Commands
 
     <CommandMethod("CAMToolLib")> Public Shared Sub CamToolLibs()
+        Dim AdskUser As String = Application.GetSystemVariable("OnlineUserName")
         Dim ccpDoc As Document = Application.DocumentManager.MdiActiveDocument
         Dim ccpDB As Database = ccpDoc.Database
         Using ccpTrans As Transaction = ccpDB.TransactionManager.StartTransaction
-            Dim Form As Form_CTL = New Form_CTL
-            Form.Activate()
-            Form.Show()
-            Form.SQLConnect_default()
-            Form.LibList_init()
+            Dim FormCTL As Form_CTL = New Form_CTL
+            FormCTL.Activate()
+            FormCTL.Show()
+            FormCTL.Label1.Text = "User: " + AdskUser.ToString
             Call TabBuilder.Deactiv()
             ccpTrans.Commit()
         End Using
     End Sub
 End Class
+
